@@ -28,6 +28,9 @@ var Player = function() {
     // The image/sprite for our player, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/char-boy.png';
+    //Initial location of player
+    this.x = 200;
+    this.y = 400;
 };
 
 // Update the player's position, required method for game
@@ -52,6 +55,7 @@ var allEnemies = [];
 var enemy1 = new Enemy();
 // Place the player object in a variable called player
 var player = new Player();
+player.render();
 
 
 // This listens for key presses and sends the keys to your
