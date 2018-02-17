@@ -65,6 +65,7 @@ Player.prototype.handleInput = function(input) {
                 player.y = player.y - 83;
             }
             else {
+                player.x = 200;
                 player.y = 405;
             }
             break;
