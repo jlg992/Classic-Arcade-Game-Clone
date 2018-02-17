@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(x, y) {
+var Enemy = function(x, y, speed = 100) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -8,6 +8,7 @@ var Enemy = function(x, y) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
+    this.speed = speed + Math.random() * 200;
 };
 
 // Update the enemy's position, required method for game
@@ -16,6 +17,10 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    this.x += this.speed * dt;
+    if (this.x >= 505) {
+      this.x = 0;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -54,9 +59,9 @@ Player.prototype.handleInput = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
-var enemy1 = new Enemy(0, 63);
+var enemy1 = new Enemy(0, 63, 3);
 var enemy2 = new Enemy(0, 145);
-var enemy3 = new Enemy(0, 229);
+var enemy3 = new Enemy(0, 229, 4);
 allEnemies.push(enemy1, enemy2, enemy3);
 
 
