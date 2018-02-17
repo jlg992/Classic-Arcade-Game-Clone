@@ -37,7 +37,7 @@ var Player = function() {
     this.sprite = 'images/char-boy.png';
     //Initial location of player
     this.x = 200;
-    this.y = 400;
+    this.y = 405;
 };
 
 // Update the player's position, required method for game
@@ -53,7 +53,21 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function() {
+Player.prototype.handleInput = function(input) {
+    switch (input) {
+        case 'left':
+            player.x = player.x - 100;
+            break;
+        case 'up':
+            player.y = player.y - 83;
+            break;
+        case 'right':
+            player.x = player.x + 100;
+            break;
+        case 'down':
+            player.y = player.y + 83;
+            break;
+    }
 };
 
 // Now instantiate your objects.
