@@ -40,21 +40,9 @@ var Player = function() {
     this.y = 405;
 };
 
-// Update the player's position, required method for game
-// Parameter: dt, a time delta between ticks
+
 Player.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-};
-
-// Draw the player on the screen, required method for game
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-Player.prototype.handleInput = function(input) {
-    switch (input) {
+    switch (this.input) {
         case 'left':
             if (player.x !== 0) {
                 player.x = player.x - 100;
@@ -80,6 +68,16 @@ Player.prototype.handleInput = function(input) {
             }
             break;
     }
+    this.input = null;
+};
+
+// Draw the player on the screen, required method for game
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+Player.prototype.handleInput = function(input) {
+    this.input = input;
 };
 
 // Now instantiate your objects.
