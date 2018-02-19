@@ -18,10 +18,26 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x += this.speed * dt;
+    this.checkCollisions();
     if (this.x >= 505) {
       this.x = 0;
     }
 };
+
+//As enemies move, check to see if they've collided with  player
+Enemy.prototype.checkCollisions = function() {
+    for (var i = 0; i < allEnemies.length; i++) {
+        if (allEnemies[i].x < player.x + 50 && allEnemies[i].x + 50 > player.x &&
+        allEnemies[i].y < player.y + 55 && 55 + allEnemies[i].y > player.y) {
+            player.x = 200;
+            player.y = 405;
+        }
+    }
+};
+/*
+Source: 2D collision detection
+(https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection)
+ */
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -79,6 +95,7 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(input) {
     this.input = input;
 };
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
