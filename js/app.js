@@ -57,7 +57,7 @@ var Player = function() {
 };
 
 
-Player.prototype.update = function(dt) {
+Player.prototype.update = function() {
     switch (this.input) {
         case 'left':
             if (player.x !== 0) {
@@ -65,12 +65,11 @@ Player.prototype.update = function(dt) {
             }
             break;
         case 'up':
-            if (player.y > 73) {
+            if (player.y > -10) {
                 player.y = player.y - 83;
-            }
-            else {
-                player.x = 200;
-                player.y = 405;
+                if (player.y === -10) {
+                    player.winCondition();
+                }
             }
             break;
         case 'right':
@@ -94,6 +93,41 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(input) {
     this.input = input;
+};
+
+Player.prototype.winCondition = function() {
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    //Get the button in modal
+    var button = document.querySelector("button");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    modal.style.display = "block";
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+  };
+
+    button.onclick = function() {
+        modal.style.display = "none";
+        player.x = 200;
+        player.y = 405;
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+    }
 };
 
 
