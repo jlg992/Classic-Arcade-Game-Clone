@@ -96,6 +96,10 @@ Player.prototype.handleInput = function(input) {
 };
 
 Player.prototype.winCondition = function() {
+    /*
+    Open a modal box, when player reaches the river.
+    Source: How To Create a Modal Box(https://www.w3schools.com/howto/howto_css_modals.asp)
+     */
     // Get the modal
     var modal = document.getElementById('myModal');
 
