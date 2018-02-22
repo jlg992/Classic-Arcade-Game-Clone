@@ -60,26 +60,26 @@ var Player = function() {
 Player.prototype.update = function() {
     switch (this.input) {
         case 'left':
-            if (player.x !== 0) {
-                player.x = player.x - 100;
+            if (this.x !== 0) {
+                this.x = this.x - 100;
             }
             break;
         case 'up':
-            if (player.y > -10) {
-                player.y = player.y - 83;
-                if (player.y === -10) {
-                    player.winCondition();
+            if (this.y > -10) {
+                this.y = this.y - 83;
+                if (this.y === -10) {
+                    this.winCondition();
                 }
             }
             break;
         case 'right':
-            if (player.x !== 400) {
-                player.x = player.x + 100;
+            if (this.x !== 400) {
+                this.x = this.x + 100;
             }
             break;
         case 'down':
-            if (player.y !== 405) {
-                player.y = player.y + 83;
+            if (this.y !== 405) {
+                this.y = this.y + 83;
             }
             break;
     }
