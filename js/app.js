@@ -29,8 +29,7 @@ Enemy.prototype.checkCollisions = function() {
     for (var i = 0; i < allEnemies.length; i++) {
         if (allEnemies[i].x < player.x + 50 && allEnemies[i].x + 50 > player.x &&
         allEnemies[i].y < player.y + 55 && 55 + allEnemies[i].y > player.y) {
-            player.x = 200;
-            player.y = 405;
+            player.playerReset();
         }
     }
 };
@@ -95,6 +94,11 @@ Player.prototype.handleInput = function(input) {
     this.input = input;
 };
 
+Player.prototype.playerReset = function() {
+    this.x = 200;
+    this.y = 405;
+}
+
 Player.prototype.winCondition = function() {
     /*
     Open a modal box, when player reaches the river.
@@ -112,18 +116,19 @@ Player.prototype.winCondition = function() {
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
+    //Bind player object to this
+
     // When the user clicks on the button, open the modal
     modal.style.display = "block";
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
       modal.style.display = "none";
-  };
+    };
+
 
     button.onclick = function() {
-        modal.style.display = "none";
-        player.x = 200;
-        player.y = 405;
+      modal.style.display = "none";
     };
 
     // When the user clicks anywhere outside of the modal, close it
@@ -132,6 +137,7 @@ Player.prototype.winCondition = function() {
           modal.style.display = "none";
       }
     }
+    this.playerReset();
 };
 
 
