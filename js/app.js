@@ -26,7 +26,8 @@ Enemy.prototype.update = function(dt) {
 
 //As enemies move, check to see if they've collided with  player
 Enemy.prototype.checkCollisions = function() {
-    for (var i = 0; i < allEnemies.length; i++) {
+    var allEnemiesLength = allEnemies.length;
+    for (var i = 0; i < allEnemiesLength; i++) {
         if (allEnemies[i].x < player.x + 50 && allEnemies[i].x + 50 > player.x &&
         allEnemies[i].y < player.y + 55 && 55 + allEnemies[i].y > player.y) {
             player.playerReset();
